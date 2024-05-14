@@ -1,18 +1,5 @@
 # React Event Scheduler App
 
-![](https://github.com/AhmedAlatawi/react-event-scheduler/actions/workflows/main.yml/badge.svg)
-[![codecov](https://codecov.io/gh/AhmedAlatawi/react-event-scheduler/graph/badge.svg?token=EG9GTUBOUE)](https://codecov.io/gh/AhmedAlatawi/react-event-scheduler)
-[![License: MIT](https://img.shields.io/github/license/AhmedAlatawi/react-event-scheduler)](https://github.com/AhmedAlatawi/react-event-scheduler/blob/master/LICENSE)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-![](./images/react-event-pic.gif)
-
-Event Scheduler is a React app that allows users to create events. An event can be anything, such as a sport event, team meeting, party announcement, personal advertisement, etc. An event consists of title, start and end date/time, and description. Events can also be shared on FB or Twitter.
-All events are public by default (visible to everyone). They can also be private (only visible to you) by checking the private checkbox.
-
-### [Demo](https://react-event-scheduler.vercel.app/) :movie_camera:
-
 ## Tech Stack
 
 ### Frontend
@@ -63,20 +50,3 @@ You will also see any lint errors in the console.
 - Make events as private (only visible to creators)
 - Session expiry warning (displayed when being idle for 3 minutes after logging in)
 - Share events with family & friends on Facebook and Twitter
-
-### Coming soon
-
-- User profile
-- Admin tab & profile
-
-## Run unit tests
-
-coming soon...
-
-## Run E2E tests
-
-coming soon...
-
-### Author :books:
-
-[Ahmed Alatawi](https://github.com/AhmedAlatawi)

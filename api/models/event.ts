@@ -27,6 +27,27 @@ const schema = new Schema<IEvent>(
       type: Boolean,
       required: false,
     },
+    venue: {
+      type: String,
+      required: true,
+    },
+    speaker: {
+      type: String,
+      required: true,
+    },
+
+    number_of_attendees: {
+      type: Number,
+      required: true,
+    },
+    hosted_by: {
+      type: String,
+      required: true,
+    },
+    contact_number: {
+      type: String,
+      required: true,
+    },
     createdBy: {
       type: Schema.Types.ObjectId,
       ref: 'User',

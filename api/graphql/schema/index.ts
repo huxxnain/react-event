@@ -33,6 +33,11 @@ export const typeDefs = gql`
     createdBy: User
     createdAt: Float
     updatedAt: Float
+    venue: String!
+    hosted_by: String!
+    contact_number: String!
+    number_of_attendees: Float
+    speaker: String!
   }
 
   type Events {
@@ -75,6 +80,11 @@ export const typeDefs = gql`
     end: String!
     isPrivate: Boolean!
     description: String!
+    venue: String!
+    hosted_by: String!
+    contact_number: String!
+    number_of_attendees: Float
+    speaker: String!
   }
 
   input FilterInput {

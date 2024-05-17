@@ -19,6 +19,11 @@ const initEvent = {
   end: '',
   isPrivate: false,
   description: '',
+  venue: '',
+  hosted_by: '',
+  contact_number: '',
+  number_of_attendees: 0,
+  speaker: '',
 }
 
 function AddEvent() {
@@ -27,10 +32,35 @@ function AddEvent() {
   const [resetForm, setResetForm] = useState(false)
   const [disableSaveBtn, setDisableSaveBtn] = useState(true)
 
-  const { title, start, end, isPrivate, description } = event
+  const {
+    title,
+    start,
+    end,
+    isPrivate,
+    description,
+    venue,
+    hosted_by,
+    contact_number,
+    number_of_attendees,
+    speaker,
+  } = event
 
   const [saveEvent, { error, data, loading, reset }] = useSaveEventMutation({
-    variables: { event: { id: '', title, start, end, isPrivate, description } },
+    variables: {
+      event: {
+        id: '',
+        title,
+        start,
+        end,
+        isPrivate,
+        description,
+        venue,
+        hosted_by,
+        contact_number,
+        number_of_attendees: Number(number_of_attendees),
+        speaker,
+      },
+    },
   })
 
   const { auth } = useContext(AuthContext)
@@ -41,7 +71,10 @@ function AddEvent() {
     setResetForm(false)
     saveEvent()
       .then(async () => {
-        setEvent({ ...initEvent })
+        setEvent({
+          ...initEvent,
+          number_of_attendees: Number(initEvent.number_of_attendees),
+        })
         setResetForm(true)
         setDisableSaveBtn(true)
       })

@@ -19,6 +19,11 @@ export type CardType = {
   createdAt?: number
   updatedAt?: number
   createdBy: string
+  venue: string
+  hosted_by: string
+  contact_number: string
+  number_of_attendees: number
+  speaker: string
 }
 
 type Props = {
@@ -37,6 +42,11 @@ const Card: FC<Props> = ({ card, onClick }) => {
     createdAt,
     updatedAt,
     createdBy,
+    number_of_attendees,
+    hosted_by,
+    contact_number,
+    speaker,
+    venue,
   } = card
 
   return (
@@ -50,7 +60,14 @@ const Card: FC<Props> = ({ card, onClick }) => {
           {isPrivate && <StyledPrivateBadge>Private</StyledPrivateBadge>}
         </h5>
         <h6 className='card-subtitle mb-2 text-muted'>{subtitle}</h6>
-        <p className='card-text'>{content}</p>
+        {/* <p className='card-text'>{content}</p> */}
+        <p className='card-text m-0'>Speaker : {speaker}</p>
+        <p className='card-text m-0'>Venue : {venue}</p>
+        <p className='card-text m-0'>Contact Number : {contact_number}</p>
+        <p className='card-text m-0'>Hosted By : {hosted_by}</p>
+        <p className='card-text m-0'>
+          Number of Attendees: {number_of_attendees}
+        </p>
         <p className='card-text'>
           <small className='text-muted'>
             posted by: {createdBy}{' '}
@@ -68,7 +85,6 @@ const Card: FC<Props> = ({ card, onClick }) => {
             ) : null
           ) : null}
         </p>
-
         <FacebookShareButtonStyled
           onClick={(e) => e.stopPropagation()}
           url={url ?? ''}
@@ -76,7 +92,6 @@ const Card: FC<Props> = ({ card, onClick }) => {
         >
           <FacebookIcon size={32} round /> Share on Facebook
         </FacebookShareButtonStyled>
-
         <TwitterShareButtonStyled
           onClick={(e) => e.stopPropagation()}
           className='card-link btn btn-outline-secondary'

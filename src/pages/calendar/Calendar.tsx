@@ -47,6 +47,11 @@ function Calendar() {
     isPrivate: false,
     description: '',
     createdById: '',
+    venue: '',
+    hosted_by: '',
+    contact_number: '',
+    number_of_attendees: 0,
+    speaker: '',
   })
 
   const [actionBtns, setActionBtns] = useState({
@@ -82,7 +87,18 @@ function Calendar() {
     fetchPolicy: 'cache-and-network',
   })
 
-  const { title, start, end, isPrivate, description } = event
+  const {
+    title,
+    start,
+    end,
+    isPrivate,
+    description,
+    venue,
+    hosted_by,
+    contact_number,
+    number_of_attendees,
+    speaker,
+  } = event
 
   const [saveEvent, { loading: saveEventLoading }] = useSaveEventMutation({
     onError: setServerError,
@@ -138,6 +154,11 @@ function Calendar() {
           end,
           isPrivate,
           description,
+          venue,
+          hosted_by,
+          contact_number,
+          number_of_attendees: Number(number_of_attendees),
+          speaker,
         },
       },
     })
@@ -183,6 +204,11 @@ function Calendar() {
       isPrivate: false,
       description: '',
       createdById: '',
+      venue: '',
+      hosted_by: '',
+      contact_number: '',
+      number_of_attendees: 0,
+      speaker: '',
     })
     setModal({
       title: 'New Event',
@@ -225,7 +251,16 @@ function Calendar() {
     )
 
     const { title } = clickInfo.event
-    const { isPrivate, description, createdBy } = clickInfo.event.extendedProps
+    const {
+      isPrivate,
+      description,
+      createdBy,
+      venue,
+      hosted_by,
+      contact_number,
+      number_of_attendees,
+      speaker,
+    } = clickInfo.event.extendedProps
 
     setEvent({
       title,
@@ -234,6 +269,11 @@ function Calendar() {
       isPrivate,
       description,
       createdById: createdBy._id,
+      venue,
+      hosted_by,
+      contact_number,
+      number_of_attendees,
+      speaker,
     })
     setModal({
       title: isTheOwner ? 'Edit Event' : 'Event (read only)',

@@ -9,6 +9,11 @@ export interface IEvent {
   url: string
   isPrivate: boolean
   createdBy: Types.ObjectId
+  venue: string
+  speaker: string
+  hosted_by: string
+  number_of_attendees: number
+  contact_number: string
 }
 
 export interface IUser {

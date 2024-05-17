@@ -39,6 +39,11 @@ function SearchEvents() {
     isPrivate: false,
     description: '',
     createdById: '',
+    venue: '',
+    hosted_by: '',
+    contact_number: '',
+    number_of_attendees: 0,
+    speaker: '',
   })
 
   const [actionBtns, setActionBtns] = useState({
@@ -61,7 +66,20 @@ function SearchEvents() {
   const { auth } = useContext(AuthContext)
   const { searchText, currentPage, allCheck, currentCheck, expiredCheck } =
     formProps
-  const { id, title, start, end, isPrivate, description, createdById } = event
+  const {
+    id,
+    title,
+    start,
+    end,
+    isPrivate,
+    description,
+    createdById,
+    venue,
+    hosted_by,
+    contact_number,
+    number_of_attendees,
+    speaker,
+  } = event
   const { displayDeleteBtn, hideSaveBtn, disableSaveBtn, disableDeleteBtn } =
     actionBtns
 
@@ -120,7 +138,20 @@ function SearchEvents() {
   }
 
   const clickEventHandler = (event: EventFull) => {
-    const { id, title, start, end, isPrivate, description, createdBy } = event
+    const {
+      id,
+      title,
+      start,
+      end,
+      isPrivate,
+      description,
+      createdBy,
+      venue,
+      hosted_by,
+      contact_number,
+      number_of_attendees,
+      speaker,
+    } = event
     const createdById = createdBy?._id ?? ''
     const isTheOwner = (auth && auth.userId === createdById) ?? false
 
@@ -147,6 +178,11 @@ function SearchEvents() {
       description,
       isPrivate,
       createdById,
+      venue,
+      hosted_by,
+      contact_number,
+      number_of_attendees,
+      speaker,
     })
     setModal({
       title: isTheOwner ? 'Edit Event' : 'Event (read only)',
@@ -199,6 +235,11 @@ function SearchEvents() {
           end,
           isPrivate,
           description,
+          venue,
+          hosted_by,
+          contact_number,
+          number_of_attendees: Number(number_of_attendees),
+          speaker,
         },
       },
     })
@@ -279,6 +320,11 @@ function SearchEvents() {
     createdAt: event.createdAt ?? 0,
     updatedAt: event.updatedAt ?? 0,
     isPrivate: event.isPrivate,
+    venue: event.venue,
+    hosted_by: event.hosted_by,
+    contact_number: event.contact_number ?? '',
+    number_of_attendees: event.number_of_attendees ?? 0,
+    speaker: event.speaker,
   })
 
   return (

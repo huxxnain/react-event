@@ -30,6 +30,11 @@ const SharedEvent: FC = () => {
     createdBy: data?.getEvent.createdBy?.username,
     createdAt: data?.getEvent.createdAt,
     updatedAt: data?.getEvent.updatedAt,
+    venue: data?.getEvent.venue,
+    hosted_by: data?.getEvent.hosted_by,
+    contact_number: data?.getEvent.contact_number ?? '',
+    number_of_attendees: data?.getEvent.number_of_attendees ?? 0,
+    speaker: data?.getEvent.speaker,
   }
 
   return <CardView card={card} />

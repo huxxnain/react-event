@@ -8,6 +8,11 @@ mutation getEvent($id: ID!) {
     description
     createdAt
     updatedAt
+    venue
+    hosted_by
+    contact_number
+    number_of_attendees
+    speaker
     createdBy {
       username
     }

@@ -20,6 +20,11 @@ fragment EventFull on EventFull {
   description
   createdAt
   updatedAt
+  venue
+  hosted_by
+  contact_number
+  number_of_attendees
+  speaker
   createdBy {
     _id
     username
@@ -29,6 +34,23 @@ fragment EventFull on EventFull {
 fragment Events on Events {
   totalCount
   events {
-    ...EventFull
+    id
+    title
+    start
+    end
+    url
+    isPrivate
+    description
+    createdAt
+    updatedAt
+    venue
+    hosted_by
+    contact_number
+    number_of_attendees
+    speaker
+    createdBy {
+      _id
+      username
+    }
   }
 }

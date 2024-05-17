@@ -48,6 +48,11 @@ export type EventFull = {
   isPrivate: Scalars['Boolean']
   start: Scalars['String']
   title: Scalars['String']
+  venue: Scalars['String']
+  hosted_by: Scalars['String']
+  contact_number: Scalars['String']
+  number_of_attendees: Scalars['Int']
+  speaker: Scalars['String']
   updatedAt?: Maybe<Scalars['Float']>
   url?: Maybe<Scalars['String']>
 }
@@ -59,6 +64,11 @@ export type EventInput = {
   isPrivate: Scalars['Boolean']
   start: Scalars['String']
   title: Scalars['String']
+  venue: Scalars['String']
+  hosted_by: Scalars['String']
+  contact_number: Scalars['String']
+  number_of_attendees: Scalars['Int']
+  speaker: Scalars['String']
 }
 
 export type Events = {
@@ -201,6 +211,11 @@ export type EventFullFragment = {
   description: string
   createdAt?: number | null
   updatedAt?: number | null
+  venue: string
+  hosted_by: string
+  contact_number: string
+  number_of_attendees: number
+  speaker: string
   createdBy?: { __typename?: 'User'; _id: string; username: string } | null
 }
 
@@ -216,6 +231,11 @@ export type EventsFragment = {
     url?: string | null
     isPrivate: boolean
     description: string
+    venue: string
+    hosted_by: string
+    contact_number: string
+    number_of_attendees: number
+    speaker: string
     createdAt?: number | null
     updatedAt?: number | null
     createdBy?: { __typename?: 'User'; _id: string; username: string } | null
@@ -239,6 +259,11 @@ export type SaveEventMutation = {
     description: string
     createdAt?: number | null
     updatedAt?: number | null
+    venue: string
+    hosted_by: string
+    contact_number: string
+    number_of_attendees: number
+    speaker: string
     createdBy?: { __typename?: 'User'; _id: string; username: string } | null
   }
 }
@@ -301,6 +326,11 @@ export type GetEventMutation = {
     description: string
     createdAt?: number | null
     updatedAt?: number | null
+    venue: string
+    hosted_by: string
+    contact_number: string
+    number_of_attendees: number
+    speaker: string
     createdBy?: { __typename?: 'User'; username: string } | null
   }
 }
@@ -323,6 +353,11 @@ export type GetEventsQuery = {
       url?: string | null
       isPrivate: boolean
       description: string
+      venue: string
+      hosted_by: string
+      contact_number: string
+      number_of_attendees: number
+      speaker: string
       createdAt?: number | null
       updatedAt?: number | null
       createdBy?: { __typename?: 'User'; _id: string; username: string } | null
@@ -369,6 +404,11 @@ export type GetUserEventsQuery = {
       url?: string | null
       isPrivate: boolean
       description: string
+      venue: string
+      hosted_by: string
+      contact_number: string
+      number_of_attendees: number
+      speaker: string
       createdAt?: number | null
       updatedAt?: number | null
       createdBy?: { __typename?: 'User'; _id: string; username: string } | null
@@ -572,6 +612,7 @@ export type EventFullResolvers<
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>
   isPrivate?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>
   start?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  venue?: Resolver<ResolversTypes['String'], ParentType, ContextType>
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>
   updatedAt?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>
   url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>
@@ -717,6 +758,11 @@ export const EventFullFragmentDoc = gql`
     description
     createdAt
     updatedAt
+    venue
+    hosted_by
+    contact_number
+    number_of_attendees
+    speaker
     createdBy {
       _id
       username
@@ -937,6 +983,11 @@ export const GetEventDocument = gql`
       description
       createdAt
       updatedAt
+      venue
+      hosted_by
+      contact_number
+      number_of_attendees
+      speaker
       createdBy {
         username
       }

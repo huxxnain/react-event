@@ -11,6 +11,11 @@ export type EventType = {
   isPrivate: boolean
   description: string
   createdById?: string
+  venue: string
+  hosted_by: string
+  contact_number: string
+  number_of_attendees: number
+  speaker: string
 }
 
 type Props = {
@@ -68,6 +73,8 @@ const EventBody: FC<Props> = ({
     const getValue = () =>
       prop === 'isPrivate' ? (event.target as HTMLInputElement).checked : value
 
+    if (prop == 'number_of_attendees') {
+    }
     setLocalEvent({
       ...localEvent,
       [prop]: getValue(),
@@ -171,8 +178,86 @@ const EventBody: FC<Props> = ({
           onChange={(e) => handleValueChange(e, 'description')}
         ></textarea>
       </div>
-      <div className='col-12'>
-        <div className='form-check'>
+      <div className='col-6 required'>
+        <label htmlFor='venue' className='form-label'>
+          Venue
+        </label>
+        <input
+          type='text'
+          className='form-control'
+          disabled={disableEdit}
+          id='venue'
+          placeholder='Venue'
+          maxLength={50}
+          value={localEvent.venue}
+          onChange={(e) => handleValueChange(e, 'venue')}
+        />
+      </div>
+      <div className='col-6 required'>
+        <label htmlFor='speaker' className='form-label'>
+          Speaker
+        </label>
+        <input
+          type='text'
+          className='form-control'
+          disabled={disableEdit}
+          id='speaker'
+          placeholder='Speaker'
+          maxLength={50}
+          value={localEvent.speaker}
+          onChange={(e) => handleValueChange(e, 'speaker')}
+        />
+      </div>
+
+      <div className='col-6 required'>
+        <label htmlFor='contact_number' className='form-label'>
+          Contact Number
+        </label>
+        <input
+          type='tel'
+          className='form-control'
+          disabled={disableEdit}
+          id='contact_number'
+          placeholder='Enter Contact Number'
+          // pattern='009[0-9]{10,12}'
+          value={localEvent.contact_number}
+          onChange={(e) => handleValueChange(e, 'contact_number')}
+          required
+        />
+      </div>
+
+      <div className='col-6 required'>
+        <label htmlFor='number_of_attendees' className='form-label'>
+          Number Of Attendees
+        </label>
+        <input
+          type='number'
+          className='form-control'
+          disabled={disableEdit}
+          id='number_of_attendees'
+          placeholder='Number of Attendees'
+          value={localEvent.number_of_attendees}
+          onChange={(e) => handleValueChange(e, 'number_of_attendees')}
+        />
+      </div>
+
+      <div className='col-6 required'>
+        <label htmlFor='hosted_by' className='form-label'>
+          Hosted By
+        </label>
+        <input
+          type='text'
+          className='form-control'
+          disabled={disableEdit}
+          id='hosted_by'
+          placeholder='Hosted  By'
+          maxLength={50}
+          value={localEvent.hosted_by}
+          onChange={(e) => handleValueChange(e, 'hosted_by')}
+        />
+      </div>
+      <div className='col-6 '>
+        <div className='form-check' style={{ marginTop: '40px' }}>
           <input
             className='form-check-input'
             type='checkbox'

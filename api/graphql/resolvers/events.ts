@@ -55,12 +55,14 @@ export const Events = {
       .limit(pageSize)
       .skip(pageNumber > 0 ? (pageNumber - 1) * pageSize : 0)
       .populate('createdBy')
+
+    console.log(events)
     const totalCount = await EventModel.countDocuments({
       ...regexFilter,
       ...statusFilter,
     })
 
-    return { totalCount, events }
+    return { totalCount: 0, events }
   },
   getEvent: async ({ id }: { id: string }) => {
     const event = await EventModel.findOne({ _id: id }).populate('createdBy')
@@ -107,7 +109,19 @@ export const Events = {
   },
   saveEvent: async (
     {
-      event: { id, title, start, end, isPrivate, description },
+      event: {
+        id,
+        title,
+        start,
+        end,
+        isPrivate,
+        description,
+        venue,
+        hosted_by,
+        contact_number,
+        number_of_attendees,
+        speaker,
+      },
     }: { event: EventInput },
     { isAuthorized, userId }: IAuthParams,
   ) => {
@@ -134,7 +148,18 @@ export const Events = {
 
       savedEvent = await EventModel.findOneAndUpdate(
         { _id: id, createdBy: userId },
-        { title, start, end, isPrivate, description },
+        {
+          title,
+          start,
+          end,
+          isPrivate,
+          description,
+          venue,
+          hosted_by,
+          contact_number,
+          number_of_attendees,
+          speaker,
+        },
         { new: true },
       ).populate('createdBy')
     } else {
@@ -145,6 +170,11 @@ export const Events = {
         isPrivate,
         description,
         createdBy: userId,
+        venue,
+        hosted_by,
+        contact_number,
+        number_of_attendees,
+        speaker,
       })
 
       savedEvent = await event.save().then((e) => e.populate('createdBy'))
